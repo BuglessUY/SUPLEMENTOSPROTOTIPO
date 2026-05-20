@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tienda premium de suplementos deportivos, creatina, proteínas y accesorios fitness. Tu mejor versión empieza acá.">
-    <meta name="keywords" content="suplementos deportivos, creatina, proteína, accesorios fitness, tienda fitness, pre entreno, gym">
-    <title>TITAN FITNESS | Suplementos Deportivos Premium</title>
+    <title>SUPLEMENTOS Y ACCESORIOS| Suplementos y Accesorios Deportivos Premium</title>
+    <meta name="description" content="Tu mejor versión empieza acá. Suplementos deportivos, proteína, creatina y accesorios fitness premium. Envíos en el día.">
+    <meta name="keywords" content="suplementos deportivos, creatina, proteína, accesorios fitness, tienda fitness, gym, pre entreno">
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;0,900;1,900&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
-            --bg-dark: #050505;
+            --bg-main: #050505;
             --bg-card: #111111;
-            --bg-card-hover: #1a1a1a;
-            --neon-green: #39ff14;
-            --neon-green-glow: rgba(57, 255, 20, 0.4);
-            --neon-orange: #ff5e00;
+            --bg-lighter: #1a1a1a;
+            --primary: #ff0033;
+            --primary-glow: rgba(255, 0, 51, 0.6);
             --text-main: #ffffff;
-            --text-muted: #aaaaaa;
-            --font-main: 'Montserrat', sans-serif;
+            --text-muted: #a0a0a0;
+            --font-heading: 'Oswald', sans-serif;
+            --font-body: 'Inter', sans-serif;
             --transition: all 0.3s ease;
         }
 
@@ -28,1033 +33,1151 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: var(--font-main);
-            background-color: var(--bg-dark);
+            background-color: var(--bg-main);
             color: var(--text-main);
+            font-family: var(--font-body);
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Utilidades */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .section-padding {
-            padding: 100px 0;
-        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
 
+        /* Typography */
+        h1, h2, h3, h4 { font-family: var(--font-heading); text-transform: uppercase; }
         .section-title {
+            font-size: 3rem;
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 50px;
+            margin-bottom: 3rem;
+            font-weight: 700;
             letter-spacing: 2px;
         }
-        
-        .section-title span {
-            color: var(--neon-green);
-        }
+        .section-title span { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
 
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background: var(--neon-green);
-            color: #000;
-            box-shadow: 0 0 15px var(--neon-green-glow);
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 0 30px var(--neon-green);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-main);
-            border: 2px solid var(--neon-orange);
-        }
-
-        .btn-secondary:hover {
-            background: var(--neon-orange);
-            color: #fff;
-            box-shadow: 0 0 20px rgba(255, 94, 0, 0.4);
-            transform: translateY(-2px);
-        }
-
-        /* Animaciones Scroll */
+        /* Scroll Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Header & Navegación */
+        /* Reusable Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 28px;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+        .btn-primary:hover {
+            background-color: #d4002a;
+            box-shadow: 0 0 25px var(--primary);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--text-muted);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow) inset;
+        }
+
+        /* Glowing Badges */
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 5px 12px;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 3px;
+            z-index: 10;
+        }
+        .badge-offer {
+            background-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 10px var(--primary-glow);
+            animation: pulse-glow 2s infinite;
+        }
+        .badge-new {
+            background-color: #fff;
+            color: #000;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 var(--primary-glow); }
+            70% { box-shadow: 0 0 0 10px rgba(255,0,51,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,0,51,0); }
+        }
+
+        /* 1. Header Sticky */
         header {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            padding: 20px 0;
+            padding: 15px 5%;
             background: rgba(5, 5, 5, 0.85);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             z-index: 1000;
             border-bottom: 1px solid rgba(255,255,255,0.05);
             transition: var(--transition);
         }
-
         header.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            padding: 10px 5%;
+            background: rgba(5, 5, 5, 0.95);
         }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
         .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--text-main);
-            text-decoration: none;
-            text-transform: uppercase;
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 800;
             letter-spacing: 2px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
-        .logo span {
-            color: var(--neon-green);
-        }
-
-        .nav-menu {
+        .logo i { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
+        
+        .nav-links {
             display: flex;
             gap: 30px;
-            list-style: none;
-            align-items: center;
         }
-
-        .nav-menu li a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 1px;
             transition: var(--transition);
+            position: relative;
         }
-
-        .nav-menu li a:hover {
-            color: var(--neon-green);
-            text-shadow: 0 0 10px var(--neon-green-glow);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+            box-shadow: 0 0 8px var(--primary-glow);
         }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--primary); }
 
         .hamburger {
             display: none;
+            font-size: 1.5rem;
             cursor: pointer;
-            border: none;
-            background: none;
+            color: #fff;
         }
 
-        .hamburger span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: var(--text-main);
-            transition: var(--transition);
-        }
-
-        /* Hero Section */
-        #hero {
+        /* 2. Hero Section */
+        .hero {
             height: 100vh;
+            position: relative;
             display: flex;
             align-items: center;
-            position: relative;
-            background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            padding: 0 20px;
         }
-
-        #hero::before {
-            content: '';
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%);
-            z-index: 1;
+            background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            z-index: -2;
+            filter: grayscale(80%) contrast(120%);
         }
-
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,0.9));
+            z-index: -1;
+        }
+        .particles {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+            animation: float 10s infinite linear;
+            opacity: 0.4;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
         }
-
         .hero-content h1 {
-            font-size: 4.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
+            font-size: 5rem;
             line-height: 1.1;
             margin-bottom: 20px;
-            font-style: italic;
+            text-shadow: 0 0 30px rgba(0,0,0,0.8);
         }
-
         .hero-content h1 span {
-            color: transparent;
-            -webkit-text-stroke: 2px var(--neon-green);
-            text-shadow: 0 0 20px var(--neon-green-glow);
+            color: var(--primary);
+            text-shadow: 0 0 20px var(--primary-glow);
         }
-
         .hero-content p {
             font-size: 1.2rem;
-            color: var(--text-muted);
+            color: #ddd;
             margin-bottom: 40px;
-            max-width: 600px;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
-
         .hero-buttons {
             display: flex;
             gap: 20px;
+            justify-content: center;
         }
 
-        /* Particles effect in Hero */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+        /* Animated Banner Between Sections */
+        .marquee-container {
+            background-color: var(--primary);
+            color: #fff;
+            padding: 12px 0;
             overflow: hidden;
-            pointer-events: none;
+            position: relative;
+            box-shadow: 0 0 20px var(--primary-glow);
+            z-index: 5;
         }
-
-        .particle {
-            position: absolute;
-            background: var(--neon-green);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float 10s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
-        }
-
-        /* Productos Section */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background: var(--bg-card);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.05);
+        .marquee-content {
             display: flex;
-            flex-direction: column;
+            width: 200%;
+            animation: marquee 20s linear infinite;
         }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            background: var(--bg-card-hover);
-            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.1);
-            border-color: var(--neon-green-glow);
-        }
-
-        .product-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-bottom: 2px solid var(--neon-orange);
-            transition: var(--transition);
-        }
-
-        .product-card:hover .product-img {
-            filter: brightness(1.1) contrast(1.1);
-        }
-
-        .product-info {
-            padding: 25px;
-            flex-grow: 1;
+        .marquee-content span {
+            flex: 1;
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        .product-category {
-            color: var(--neon-orange);
+        /* Countdown Section */
+        .countdown-banner {
+            background: linear-gradient(45deg, #111, #1a0005);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,0,51,0.2);
+            border-bottom: 1px solid rgba(255,0,51,0.2);
+        }
+        .countdown-banner h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-family: var(--font-heading);
+        }
+        .time-box {
+            background: #000;
+            border: 2px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 8px;
+            min-width: 90px;
+            box-shadow: 0 0 15px rgba(255,0,51,0.2) inset;
+        }
+        .time-box span {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+            line-height: 1;
+        }
+        .time-box p {
+            font-family: var(--font-body);
             font-size: 0.8rem;
             text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .product-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .product-desc {
             color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        /* 3. Products Section */
+        .products {
+            padding: 100px 5%;
+        }
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        .filter-btn {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--text-muted);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px var(--primary-glow);
+        }
+        .product-img-wrapper {
+            position: relative;
+            padding-top: 100%;
+            background: #1a1a1a;
+            overflow: hidden;
+        }
+        .product-img-wrapper img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .product-img-wrapper img {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .product-category {
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+        .product-name {
+            font-size: 1.3rem;
+            font-family: var(--font-heading);
+            margin-bottom: 10px;
+        }
+        .product-desc {
             font-size: 0.9rem;
+            color: var(--text-muted);
             margin-bottom: 20px;
             flex-grow: 1;
         }
+        .product-card .btn { width: 100%; }
 
-        .product-card .btn {
-            width: 100%;
-            padding: 10px;
-        }
-
-        /* Beneficios Section */
-        #beneficios {
-            background: #0a0a0a;
+        /* 4. Benefits Section */
+        .benefits {
+            background-color: var(--bg-card);
+            padding: 80px 5%;
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             text-align: center;
         }
-
-        .benefit-item {
-            padding: 30px;
-        }
-
-        .benefit-icon {
+        .benefit-item i {
             font-size: 3rem;
-            color: var(--neon-green);
+            color: var(--primary);
             margin-bottom: 20px;
-            text-shadow: 0 0 15px var(--neon-green-glow);
+            text-shadow: 0 0 15px var(--primary-glow);
+            transition: var(--transition);
         }
-
-        .benefit-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+        .benefit-item:hover i { transform: scale(1.1) translateY(-10px); }
+        .benefit-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
-
-        .benefit-desc {
+        .benefit-item p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
-        /* Lifestyle / Instagram Section */
+        /* 5. Lifestyle Section */
+        .lifestyle {
+            padding: 100px 5%;
+        }
         .lifestyle-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 250px;
+            grid-template-rows: repeat(2, 250px);
             gap: 15px;
         }
-
         .lifestyle-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
         }
-
-        .lifestyle-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-        .lifestyle-item:nth-child(4) { grid-column: span 2; }
-
-        .lifestyle-img {
+        .lifestyle-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            filter: grayscale(40%);
         }
-
-        .lifestyle-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .lifestyle-overlay i {
-            font-size: 2rem;
-            color: var(--text-main);
-            transform: scale(0.5);
-            transition: var(--transition);
-        }
-
-        .lifestyle-item:hover .lifestyle-img {
-            transform: scale(1.1);
-        }
-
-        .lifestyle-item:hover .lifestyle-overlay {
-            opacity: 1;
-        }
-
-        .lifestyle-item:hover .lifestyle-overlay i {
-            transform: scale(1);
-        }
-
-        /* Testimonios Section */
-        #testimonios {
-            background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat fixed;
-            position: relative;
-        }
-
-        #testimonios::before {
+        .lifestyle-item::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1;
+        }
+        .lifestyle-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+        .lifestyle-item:hover::before { opacity: 1; }
+        .lifestyle-item i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 2rem;
+            color: #fff;
+            z-index: 2;
+            transition: var(--transition);
+            text-shadow: 0 0 10px var(--primary);
+        }
+        .lifestyle-item:hover i { transform: translate(-50%, -50%) scale(1); }
+        
+        .ls-1 { grid-column: span 2; grid-row: span 2; }
+        .ls-2 { grid-column: span 1; grid-row: span 1; }
+        .ls-3 { grid-column: span 1; grid-row: span 2; }
+        .ls-4 { grid-column: span 1; grid-row: span 1; }
+
+        /* 6. Testimonials */
+        .testimonials {
+            background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1920&auto=format&fit=crop') center/cover fixed;
+            position: relative;
+            padding: 100px 5%;
+        }
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            inset: 0;
             background: rgba(5,5,5,0.9);
         }
-
-        .testimonials-grid {
+        .testimonials-container {
             position: relative;
             z-index: 2;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-
         .testimonial-card {
-            background: rgba(17, 17, 17, 0.8);
-            backdrop-filter: blur(5px);
+            background: rgba(20,20,20,0.8);
+            border: 1px solid rgba(255,255,255,0.1);
             padding: 30px;
             border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
         }
-
-        .stars {
-            color: var(--neon-orange);
-            margin-bottom: 15px;
+        .testimonial-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(255,0,51,0.2);
+            transform: translateY(-5px);
         }
-
-        .testimonial-text {
-            font-style: italic;
-            color: #ddd;
-            margin-bottom: 20px;
-        }
-
+        .stars { color: #ffd700; margin-bottom: 15px; }
+        .testimonial-text { font-style: italic; color: #ddd; margin-bottom: 20px; font-size: 1rem; }
         .testimonial-author {
             display: flex;
             align-items: center;
             gap: 15px;
         }
-
         .author-avatar {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             background: #333;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
             font-weight: 700;
-            color: var(--neon-green);
-            border: 2px solid var(--neon-green);
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
+        .author-info h4 { font-size: 1.1rem; margin: 0; }
+        .author-info p { font-size: 0.8rem; color: var(--text-muted); }
 
-        /* CTA Section */
-        #cta {
-            background: linear-gradient(45deg, #000000, #1a1a1a);
+        /* 7. Strong CTA */
+        .cta-section {
+            padding: 120px 5%;
             text-align: center;
-            border-top: 2px solid var(--neon-green);
-            border-bottom: 2px solid var(--neon-green);
+            background: linear-gradient(to right, #050505, #1a0005, #050505);
+            border-top: 1px solid rgba(255,0,51,0.3);
+            border-bottom: 1px solid rgba(255,0,51,0.3);
+            position: relative;
+            overflow: hidden;
         }
-
-        #cta h2 {
-            font-size: 4rem;
-            font-weight: 900;
-            font-style: italic;
-            text-transform: uppercase;
+        .cta-section h2 {
+            font-size: 4.5rem;
+            line-height: 1.2;
             margin-bottom: 30px;
-            color: transparent;
-            -webkit-text-stroke: 1px var(--text-main);
+            text-shadow: 0 0 20px var(--primary-glow);
         }
+        .cta-section h2 span { color: var(--primary); }
 
-        /* Contacto Section */
-        .contact-wrapper {
+        /* 8. Contact Section */
+        .contact { padding: 100px 5%; }
+        .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-            background: var(--bg-card);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
-        .contact-info {
-            padding: 50px;
-            background: linear-gradient(135deg, rgba(57,255,20,0.1) 0%, rgba(0,0,0,0) 100%);
-        }
-
-        .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .contact-info p {
-            color: var(--text-muted);
-            margin-bottom: 40px;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-item {
+        .contact-info h3 { font-size: 2rem; margin-bottom: 20px; color: var(--primary); }
+        .contact-info p { color: var(--text-muted); margin-bottom: 30px; }
+        .info-item {
             display: flex;
             align-items: center;
             gap: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
         }
-
-        .contact-item i {
-            width: 40px;
-            height: 40px;
-            background: rgba(57, 255, 20, 0.1);
-            color: var(--neon-green);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            font-size: 1.2rem;
-        }
-
+        .info-item i { color: var(--primary); font-size: 1.5rem; width: 30px; text-align: center; }
+        
         .contact-form {
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group label {
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
+        .form-group { margin-bottom: 20px; }
         .form-control {
             width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #fff;
             padding: 15px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 5px;
-            color: var(--text-main);
-            font-family: var(--font-main);
+            font-family: var(--font-body);
             transition: var(--transition);
         }
-
         .form-control:focus {
             outline: none;
-            border-color: var(--neon-green);
-            background: rgba(57, 255, 20, 0.05);
-            box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
         }
+        textarea.form-control { height: 120px; resize: none; }
+        .contact-form .btn { width: 100%; }
 
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* Footer */
+        /* 9. Footer */
         footer {
             background: #000;
-            padding: 60px 0 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 60px 5% 20px;
+            border-top: 1px solid #222;
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
         }
-
         .footer-col h4 {
             font-size: 1.2rem;
             margin-bottom: 20px;
-            color: var(--neon-green);
-            text-transform: uppercase;
+            color: #fff;
         }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--neon-orange);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
+        .footer-col p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+        .social-links { display: flex; gap: 15px; }
         .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 40px;
             height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #111;
-            color: var(--text-main);
-            text-decoration: none;
+            background: #1a1a1a;
             border-radius: 50%;
             transition: var(--transition);
         }
-
         .social-links a:hover {
-            background: var(--neon-green);
-            color: #000;
+            background: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
             transform: translateY(-3px);
         }
-
-        .footer-bottom {
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+        .copyright {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 0.8rem;
         }
 
-        /* Botón WhatsApp Flotante */
-        .wpp-btn {
+        /* Floating WhatsApp */
+        .whatsapp-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: #25d366;
-            color: #fff;
             width: 60px;
             height: 60px;
+            background: #25d366;
+            color: #fff;
             border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             font-size: 2rem;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 999;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            z-index: 100;
             transition: var(--transition);
-            animation: pulse 2s infinite;
+            animation: bounce 2s infinite;
         }
-
-        .wpp-btn:hover {
+        .whatsapp-float:hover {
             transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.8);
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        /* Dynamic Popups (Toasts) */
+        .toast-container {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 99;
+            pointer-events: none;
         }
+        .promo-toast {
+            background: rgba(10,10,10,0.95);
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 15px rgba(255,0,51,0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transform: translateX(120%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.5s;
+            opacity: 0;
+            pointer-events: auto;
+            backdrop-filter: blur(5px);
+        }
+        .promo-toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .promo-toast i.icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+        .promo-text {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .toast-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            margin-left: auto;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .toast-close:hover { color: #fff; }
 
         /* Responsive */
-        @media (max-width: 991px) {
+        @media (max-width: 992px) {
             .hero-content h1 { font-size: 3.5rem; }
             .lifestyle-grid { grid-template-columns: repeat(2, 1fr); }
-            .lifestyle-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
-            .lifestyle-item:nth-child(4) { grid-column: span 1; }
-            .contact-wrapper { grid-template-columns: 1fr; }
+            .ls-1 { grid-column: span 2; grid-row: span 1; }
+            .ls-2, .ls-3, .ls-4 { grid-column: span 1; grid-row: span 1; }
+            .contact-container { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
             .hamburger { display: block; }
-            
-            .nav-menu {
+            .nav-links {
                 position: fixed;
                 top: 70px;
                 left: -100%;
-                flex-direction: column;
-                background: rgba(5,5,5,0.95);
                 width: 100%;
                 height: calc(100vh - 70px);
-                text-align: center;
-                transition: 0.3s;
-                padding-top: 50px;
-                backdrop-filter: blur(10px);
+                background: rgba(5,5,5,0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: 0.4s ease-in-out;
             }
-
-            .nav-menu.active { left: 0; }
-            
-            .nav-menu li { margin: 20px 0; }
-            
-            .nav-menu li a { font-size: 1.2rem; }
-
-            .hamburger.active span:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            .hamburger.active span:nth-child(2) { opacity: 0; }
-            .hamburger.active span:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
+            .nav-links.active { left: 0; }
+            .nav-links a { font-size: 1.5rem; }
+            .header-btn { display: none; }
             .hero-content h1 { font-size: 2.8rem; }
             .hero-buttons { flex-direction: column; }
-            .btn { width: 100%; }
-            
-            #cta h2 { font-size: 2.5rem; }
-            
-            .wpp-btn { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 1.5rem; }
+            .section-title { font-size: 2.2rem; }
+            .cta-section h2 { font-size: 3rem; }
+            .timer { flex-wrap: wrap; }
+            .toast-container { right: 15px; left: 15px; bottom: 100px; align-items: flex-end; }
+            .promo-toast { width: 100%; max-width: 350px; }
+            .whatsapp-float { right: 15px; bottom: 15px; width: 50px; height: 50px; font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Floating Dynamic Promos Container -->
+    <div class="toast-container" id="toast-container"></div>
+
     <!-- Header -->
     <header id="header">
-        <div class="nav-container">
-            <a href="#hero" class="logo">SUPLEMENTOS<span>UY</span></a>
-            <ul class="nav-menu">
-                <li><a href="#hero" class="nav-link">Inicio</a></li>
-                <li><a href="#productos" class="nav-link">Productos</a></li>
-                <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
-                <li><a href="#lifestyle" class="nav-link">Nosotros</a></li>
-                <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                <li><a href="https://wa.me/1234567890" target="_blank" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.8rem;">Consultar por WhatsApp</a></li>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-bolt"></i> SUPLEMENTOS UY
+        </a>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#lifestyle">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
-            <button class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+        </nav>
+        <a href="https://wa.me/1234567890" class="btn btn-primary header-btn" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Consultar
+        </a>
+        <div class="hamburger" id="hamburger">
+            <i class="fa-solid fa-bars"></i>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero">
-            <div id="particles-js" class="particles"></div>
-            <div class="container hero-content reveal">
-                <h1>Tu mejor versión <span>empieza acá</span></h1>
-                <p>Suplementos premium y accesorios diseñados para potenciar tu rendimiento, romper tus límites y acompañar tu progreso diario.</p>
-                <div class="hero-buttons">
-                    <a href="#productos" class="btn btn-primary">Ver Productos</a>
-                    <a href="https://wa.me/1234567890" target="_blank" class="btn btn-secondary"><i class="fab fa-whatsapp"></i> Hablar por WhatsApp</a>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="particles" id="particles"></div>
+        <div class="hero-content reveal">
+            <h1>TU MEJOR VERSIÓN <span>EMPIEZA ACÁ</span></h1>
+            <p>Suplementos de élite diseñados para romper tus límites. Potencia tu entrenamiento, acelera tu recuperación y construye el físico que buscas.</p>
+            <div class="hero-buttons">
+                <a href="#productos" class="btn btn-primary">Ver Productos</a>
+                <a href="https://wa.me/1234567890" target="_blank" class="btn btn-outline">Hablar por WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Promo Banner -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span><i class="fa-solid fa-fire"></i> HASTA 30% OFF EN EFECTIVO</span>
+            <span><i class="fa-solid fa-bolt"></i> NUEVOS INGRESOS PRE ENTRENO</span>
+            <span><i class="fa-solid fa-truck-fast"></i> ENVÍOS EN EL DÍA A MVD Y PDE</span>
+            <span><i class="fa-solid fa-dumbbell"></i> ASESORAMIENTO FITNESS GRATUITO</span>
+            <!-- Duplicate for infinite effect -->
+            <span><i class="fa-solid fa-fire"></i> HASTA 30% OFF EN EFECTIVO</span>
+            <span><i class="fa-solid fa-bolt"></i> NUEVOS INGRESOS PRE ENTRENO</span>
+            <span><i class="fa-solid fa-truck-fast"></i> ENVÍOS EN EL DÍA A MVD Y PDE</span>
+            <span><i class="fa-solid fa-dumbbell"></i> ASESORAMIENTO FITNESS GRATUITO</span>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products" id="productos">
+        <h2 class="section-title reveal">Catálogo <span>Premium</span></h2>
+        
+        <div class="filters reveal">
+            <button class="filter-btn active">Todos</button>
+            <button class="filter-btn">Proteínas</button>
+            <button class="filter-btn">Creatinas</button>
+            <button class="filter-btn">Pre Entrenos</button>
+            <button class="filter-btn">Accesorios</button>
+        </div>
+
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card reveal">
+                <div class="badge badge-offer">20% OFF</div>
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?q=80&w=600&auto=format&fit=crop" alt="Whey Protein">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Proteínas</span>
+                    <h3 class="product-name">Whey Gold Standard 5lbs</h3>
+                    <p class="product-desc">Aislado de suero de máxima pureza. 24g de proteína por servicio. Absorción ultra rápida.</p>
+                    <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20Whey%20Gold%20Standard" target="_blank" class="btn btn-outline">Consultar</a>
                 </div>
             </div>
-        </section>
 
-        <!-- Productos Section -->
-        <section id="productos" class="section-padding">
-            <div class="container">
-                <h2 class="section-title reveal">Catálogo <span>Premium</span></h2>
-                <div class="products-grid">
-                    
-                    <div class="product-card reveal">
-                        <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?q=80&w=600&auto=format&fit=crop" alt="Whey Protein" class="product-img" loading="lazy">
-                        <div class="product-info">
-                            <span class="product-category">Proteínas</span>
-                            <h3 class="product-title">Whey Protein Isolate</h3>
-                            <p class="product-desc">Máxima pureza y rápida absorción para recuperación muscular extrema post-entreno.</p>
-                            <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20la%20Whey%20Protein%20Isolate" target="_blank" class="btn btn-secondary">Consultar</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card reveal" style="transition-delay: 0.1s;">
-                        <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop" alt="Creatina" class="product-img" loading="lazy">
-                        <div class="product-info">
-                            <span class="product-category">Creatinas</span>
-                            <h3 class="product-title">Creatina Monohidratada</h3>
-                            <p class="product-desc">Aumenta tu fuerza, potencia y resistencia en cada serie. 100% pura.</p>
-                            <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20la%20Creatina" target="_blank" class="btn btn-secondary">Consultar</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card reveal" style="transition-delay: 0.2s;">
-                        <img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?q=80&w=600&auto=format&fit=crop" alt="Pre Entreno" class="product-img" loading="lazy">
-                        <div class="product-info">
-                            <span class="product-category">Pre Entrenos</span>
-                            <h3 class="product-title">Nitric Shock Energy</h3>
-                            <p class="product-desc">Energía explosiva, enfoque mental y bombeo muscular intenso para tus rutinas.</p>
-                            <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20el%20Pre%20Entreno" target="_blank" class="btn btn-secondary">Consultar</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card reveal" style="transition-delay: 0.3s;">
-                        <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=600&auto=format&fit=crop" alt="Accesorios Gym" class="product-img" loading="lazy">
-                        <div class="product-info">
-                            <span class="product-category">Accesorios</span>
-                            <h3 class="product-title">Straps & Shakers Pro</h3>
-                            <p class="product-desc">Equipamiento de alta durabilidad para acompañar tu estilo de vida fitness.</p>
-                            <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20los%20Accesorios" target="_blank" class="btn btn-secondary">Consultar</a>
-                        </div>
-                    </div>
-
+            <!-- Product 2 -->
+            <div class="product-card reveal">
+                <div class="badge badge-new">NUEVO</div>
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1622484211147-5114725e227e?q=80&w=600&auto=format&fit=crop" alt="Creatina">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Creatinas</span>
+                    <h3 class="product-name">Creatina Monohidratada 300g</h3>
+                    <p class="product-desc">100% pura y micronizada. Aumenta fuerza, potencia y volumen muscular desde la primera semana.</p>
+                    <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20Creatina%20Monohidratada" target="_blank" class="btn btn-outline">Consultar</a>
                 </div>
             </div>
-        </section>
 
-        <!-- Beneficios Section -->
-        <section id="beneficios" class="section-padding">
-            <div class="container">
-                <div class="benefits-grid">
-                    <div class="benefit-item reveal">
-                        <i class="fas fa-shield-alt benefit-icon"></i>
-                        <h3 class="benefit-title">Productos Originales</h3>
-                        <p class="benefit-desc">Trabajamos solo con marcas líderes globales garantizando calidad y sellos de autenticidad.</p>
-                    </div>
-                    <div class="benefit-item reveal" style="transition-delay: 0.1s;">
-                        <i class="fas fa-bolt benefit-icon"></i>
-                        <h3 class="benefit-title">Envíos Rápidos</h3>
-                        <p class="benefit-desc">Despachos express para que no pierdas ni un solo día de tu entrenamiento o dieta.</p>
-                    </div>
-                    <div class="benefit-item reveal" style="transition-delay: 0.2s;">
-                        <i class="fas fa-dumbbell benefit-icon"></i>
-                        <h3 class="benefit-title">Asesoramiento Fitness</h3>
-                        <p class="benefit-desc">Te guiamos en la elección del suplemento ideal según tus objetivos físicos reales.</p>
-                    </div>
-                    <div class="benefit-item reveal" style="transition-delay: 0.3s;">
-                        <i class="fas fa-headset benefit-icon"></i>
-                        <h3 class="benefit-title">Atención Personalizada</h3>
-                        <p class="benefit-desc">Soporte continuo vía WhatsApp para dudas, recomendaciones y seguimiento.</p>
-                    </div>
+            <!-- Product 3 -->
+            <div class="product-card reveal">
+                <div class="badge badge-offer">🔥 TOP VENTAS</div>
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=600&auto=format&fit=crop" alt="Pre Workout">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Pre Entrenos</span>
+                    <h3 class="product-name">C4 Ripped Explosive</h3>
+                    <p class="product-desc">Energía extrema y bombeo muscular garantizado. Fórmula con quemador de grasa incluido.</p>
+                    <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20C4%20Ripped" target="_blank" class="btn btn-outline">Consultar</a>
                 </div>
             </div>
-        </section>
 
-        <!-- Lifestyle Section -->
-        <section id="lifestyle" class="section-padding">
-            <div class="container">
-                <h2 class="section-title reveal">FITNESS <span>LIFESTYLE</span></h2>
-                <div class="lifestyle-grid">
-                    <div class="lifestyle-item reveal">
-                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop" class="lifestyle-img" loading="lazy" alt="Gym Setup">
-                        <div class="lifestyle-overlay"><i class="fab fa-instagram"></i></div>
-                    </div>
-                    <div class="lifestyle-item reveal">
-                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" class="lifestyle-img" loading="lazy" alt="Entrenamiento">
-                        <div class="lifestyle-overlay"><i class="fab fa-instagram"></i></div>
-                    </div>
-                    <div class="lifestyle-item reveal">
-                        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=800&auto=format&fit=crop" class="lifestyle-img" loading="lazy" alt="Suplementación">
-                        <div class="lifestyle-overlay"><i class="fab fa-instagram"></i></div>
-                    </div>
-                    <div class="lifestyle-item reveal">
-                        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=800&auto=format&fit=crop" class="lifestyle-img" loading="lazy" alt="Fitness Lifestyle">
-                        <div class="lifestyle-overlay"><i class="fab fa-instagram"></i></div>
-                    </div>
-                    <div class="lifestyle-item reveal">
-                        <img src="https://images.unsplash.com/photo-1526506118335-f48348b6c433?q=80&w=800&auto=format&fit=crop" class="lifestyle-img" loading="lazy" alt="Gym">
-                        <div class="lifestyle-overlay"><i class="fab fa-instagram"></i></div>
-                    </div>
+            <!-- Product 4 -->
+            <div class="product-card reveal">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop" alt="Straps Gym">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Accesorios</span>
+                    <h3 class="product-name">Straps de Cuero Pro</h3>
+                    <p class="product-desc">Agarre perfecto para tus pesos muertos y remos. Diseñados para resistir cargas extremas.</p>
+                    <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20Straps%20de%20Cuero" target="_blank" class="btn btn-outline">Consultar</a>
                 </div>
             </div>
-        </section>
+                  <div class="product-card reveal">
+                <div class="badge badge-offer">20% OFF</div>
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?q=80&w=600&auto=format&fit=crop" alt="Whey Protein">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Proteínas</span>
+                    <h3 class="product-name">Whey Gold Standard 5lbs</h3>
+                    <p class="product-desc">Aislado de suero de máxima pureza. 24g de proteína por servicio. Absorción ultra rápida.</p>
+                    <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20Whey%20Gold%20Standard" target="_blank" class="btn btn-outline">Consultar</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Testimonios Section -->
-        <section id="testimonios" class="section-padding">
-            <div class="container">
-                <h2 class="section-title reveal">Lo que dicen <span>nuestros atletas</span></h2>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card reveal">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"La mejor proteína que probé. Se nota la diferencia en la recuperación, y el asesoramiento por WhatsApp fue clave para elegir bien."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">M</div>
-                            <div>
-                                <h4 style="color: white;">Martín R.</h4>
-                                <span style="color: var(--neon-orange); font-size: 0.8rem;">@martin_fit</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card reveal" style="transition-delay: 0.1s;">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"El envío fue rapidísimo. Compré pre entreno y creatina un martes y el miércoles ya estaba en el gym dándolo todo."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">L</div>
-                            <div>
-                                <h4 style="color: white;">Lucía G.</h4>
-                                <span style="color: var(--neon-orange); font-size: 0.8rem;">@luli.trains</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card reveal" style="transition-delay: 0.2s;">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <p class="testimonial-text">"Excelente calidad en los accesorios. Los straps son súper resistentes. 100% recomendados para cargas pesadas."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">D</div>
-                            <div>
-                                <h4 style="color: white;">Diego P.</h4>
-                                <span style="color: var(--neon-orange); font-size: 0.8rem;">@diego_power</span>
-                            </div>
-                        </div>
+    <!-- Countdown Promo Section -->
+    <section class="countdown-banner reveal">
+        <h3><i class="fa-solid fa-stopwatch" style="color: var(--primary);"></i> OFERTA RELÁMPAGO TERMINA EN:</h3>
+        <div class="timer" id="countdown">
+            <div class="time-box">
+                <span id="hours">23</span>
+                <p>Horas</p>
+            </div>
+            <div class="time-box">
+                <span id="mins">59</span>
+                <p>Minutos</p>
+            </div>
+            <div class="time-box">
+                <span id="secs">59</span>
+                <p>Segundos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="beneficios">
+        <h2 class="section-title reveal">Por qué <span>Elegirnos</span></h2>
+        <div class="benefits-grid">
+            <div class="benefit-item reveal">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>100% Originales</h3>
+                <p>Solo trabajamos con marcas oficiales y productos sellados de fábrica.</p>
+            </div>
+            <div class="benefit-item reveal">
+                <i class="fa-solid fa-rocket"></i>
+                <h3>Envíos Rápidos</h3>
+                <p>Despachamos tu pedido en el día para que no interrumpas tu progreso.</p>
+            </div>
+            <div class="benefit-item reveal">
+                <i class="fa-solid fa-comments"></i>
+                <h3>Asesoría Pro</h3>
+                <p>Te ayudamos a armar tu combo ideal según tus objetivos físicos.</p>
+            </div>
+            <div class="benefit-item reveal">
+                <i class="fa-solid fa-credit-card"></i>
+                <h3>Múltiples Pagos</h3>
+                <p>Aceptamos transferencias, efectivo y tarjetas con los mejores planes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle Section -->
+    <section class="lifestyle" id="lifestyle">
+        <h2 class="section-title reveal">FITNESS <span>Lifestyle</span></h2>
+        <div class="lifestyle-grid">
+            <div class="lifestyle-item ls-1 reveal">
+                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1000&auto=format&fit=crop" alt="Gym Motivation">
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div class="lifestyle-item ls-2 reveal">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" alt="Workout">
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div class="lifestyle-item ls-3 reveal">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop" alt="Supplements">
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div class="lifestyle-item ls-4 reveal">
+                <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=800&auto=format&fit=crop" alt="Athlete">
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title reveal">Atletas <span>Hablan</span></h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card reveal">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="testimonial-text">"La mejor tienda lejos. Pedí una whey de ON y me llegó en menos de 24hs. La atención por WhatsApp fue clave para sacarme las dudas."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">M</div>
+                    <div class="author-info">
+                        <h4>Martín R.</h4>
+                        <p>Crossfitter</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- CTA Fuerte -->
-        <section id="cta" class="section-padding">
-            <div class="container reveal">
-                <h2>No es motivación.<br>Es disciplina.</h2>
-                <a href="https://wa.me/1234567890" target="_blank" class="btn btn-primary" style="font-size: 1.2rem; padding: 20px 40px;">Consultar Ahora</a>
-            </div>
-        </section>
-
-        <!-- Contacto Section -->
-        <section id="contacto" class="section-padding">
-            <div class="container">
-                <h2 class="section-title reveal">Inicia tu <span>cambio</span></h2>
-                <div class="contact-wrapper reveal">
-                    <div class="contact-info">
-                        <h3>Hablemos</h3>
-                        <p>Dejanos tu consulta sobre stock, rutinas o qué suplemento se adapta mejor a tu meta. Te respondemos a la brevedad.</p>
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <i class="fab fa-whatsapp"></i>
-                                <span>+5989999999</span>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fab fa-instagram"></i>
-                                <span>@suplementos_accesorios</span>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>DIRECCION</span>
-                            </div>
-                        </div>
+            <div class="testimonial-card reveal">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Excelentes precios y productos originales con fecha de vencimiento larga. Compro mi creatina todos los meses acá."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">S</div>
+                    <div class="author-info">
+                        <h4>Sofía L.</h4>
+                        <p>Personal Trainer</p>
                     </div>
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nombre Completo</label>
-                            <input type="text" id="name" class="form-control" required placeholder="Tu nombre y apellido">
-                        </div>
-                        <div class="form-group">
-                            <label for="ig">Usuario de Instagram</label>
-                            <input type="text" id="ig" class="form-control" placeholder="@tu_usuario">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Tu consulta</label>
-                            <textarea id="message" class="form-control" required placeholder="¿En qué podemos ayudarte?"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                    </form>
                 </div>
             </div>
-        </section>
-    </main>
+            <div class="testimonial-card reveal">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <p class="testimonial-text">"Los accesorios son de primera. Compré unos straps y un cinto, aguantan entrenamientos de powerlifting sin problema."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">F</div>
+                    <div class="author-info">
+                        <h4>Federico G.</h4>
+                        <p>Powerlifter</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strong CTA -->
+    <section class="cta-section reveal">
+        <h2>NO ES MOTIVACIÓN.<br><span>ES DISCIPLINA.</span></h2>
+        <a href="https://wa.me/1234567890" target="_blank" class="btn btn-primary" style="font-size: 1.5rem; padding: 15px 40px;">
+            CONSULTAR AHORA <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <h2 class="section-title reveal">Hablemos de <span>Resultados</span></h2>
+        <div class="contact-container">
+            <div class="contact-info reveal">
+                <h3>CONTACTO DIRECTO</h3>
+                <p>Escribinos para armar tu combo, consultar stock o recibir asesoramiento gratuito. Estamos para potenciar tu entrenamiento.</p>
+                
+                <div class="info-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>+5989999999</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>@SUPLEMENTOSUY</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>info@SUPLEMENTOS.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>DIRECCION</span>
+                </div>
+            </div>
+
+            <div class="contact-form reveal">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="nombre" class="form-control" placeholder="Tu Nombre / Apodo Gym" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="instagram" class="form-control" placeholder="Tu usuario de Instagram (Opcional)">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="mensaje" class="form-control" placeholder="¿Qué estás buscando? Ej: Busco aumentar masa muscular..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Enviar Consulta <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="#hero" class="logo" style="display: block; margin-bottom: 20px;">SUPLEMENTOS <span> UY</span></a>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Potenciando atletas desde el día cero. Suplementación inteligente para resultados reales.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Links Rápidos</h4>
-                    <ul class="footer-links">
-                        <li><a href="#hero">Inicio</a></li>
-                        <li><a href="#productos">Productos</a></li>
-                        <li><a href="#beneficios">Beneficios</a></li>
-                        <li><a href="#testimonios">Testimonios</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Categorías</h4>
-                    <ul class="footer-links">
-                        <li><a href="#productos">Proteínas</a></li>
-                        <li><a href="#productos">Creatinas</a></li>
-                        <li><a href="#productos">Pre Entrenos</a></li>
-                        <li><a href="#productos">Accesorios</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contacto</h4>
-                    <ul class="footer-links">
-                        <li style="color: var(--text-muted);"><i class="fab fa-whatsapp" style="color: var(--neon-green); margin-right: 10px;"></i> +54 9 11 1234-5678</li>
-                        <li style="color: var(--text-muted);"><i class="fas fa-envelope" style="color: var(--neon-green); margin-right: 10px;"></i> info@titanfit.com</li>
-                    </ul>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo" style="margin-bottom: 20px;">
+                    <i class="fa-solid fa-bolt"></i> SUPLEMENTOS UY
+                </a>
+                <p>Suplementación deportiva de alto rendimiento. Resultados reales para atletas reales.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 BUGLESSUY. Todos los derechos reservados.</p>
+            <div class="footer-col">
+                <h4>Categorías</h4>
+                <ul class="footer-links">
+                    <li><a href="#productos">Proteínas</a></li>
+                    <li><a href="#productos">Creatinas</a></li>
+                    <li><a href="#productos">Aminoácidos</a></li>
+                    <li><a href="#productos">Pre Entrenos</a></li>
+                    <li><a href="#productos">Accesorios</a></li>
+                </ul>
             </div>
+            <div class="footer-col">
+                <h4>Enlaces Útiles</h4>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#beneficios">Métodos de Envío</a></li>
+                    <li><a href="#beneficios">Medios de Pago</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 BuglessUy. Todos los derechos reservados. No incluye carrito de compras funcional, sitio de exhibición.
         </div>
     </footer>
 
-    <!-- WhatsApp Flotante -->
-    <a href="https://wa.me/1234567890" target="_blank" class="wpp-btn">
-        <i class="fab fa-whatsapp"></i>
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- Funcionalidad JavaScript -->
+    <!-- JavaScript -->
     <script>
-        // Sticky Header
+        // 1. Sticky Header
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -1064,87 +1187,169 @@
             }
         });
 
-        // Menú Hamburguesa Mobile
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        const navLinks = document.querySelectorAll('.nav-link');
+        // 2. Mobile Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-links a');
 
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
         });
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-xmark');
+                hamburger.querySelector('i').classList.add('fa-bars');
             });
         });
 
-        // Scroll Reveal Animation con IntersectionObserver
+        // 3. Scroll Reveal Animation (Intersection Observer)
         const revealElements = document.querySelectorAll('.reveal');
-
-        const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+        
+        const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                     observer.unobserve(entry.target);
                 }
             });
-        }, revealOptions);
-
-        revealElements.forEach(el => {
-            revealOnScroll.observe(el);
+        }, {
+            root: null,
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
         });
 
-        // Validación simple Formulario
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 4. Hero Particles Generator
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            let particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random properties
+            let size = Math.random() * 8 + 2;
+            let left = Math.random() * 100;
+            let duration = Math.random() * 10 + 5;
+            let delay = Math.random() * 5;
+
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${left}%`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `${delay}s`;
+
+            particlesContainer.appendChild(particle);
+        }
+
+        // 5. Countdown Timer
+        const hoursEl = document.getElementById('hours');
+        const minsEl = document.getElementById('mins');
+        const secsEl = document.getElementById('secs');
+
+        // Set initial time (23:59:59)
+        let totalSeconds = 23 * 3600 + 59 * 60 + 59;
+
+        setInterval(() => {
+            if (totalSeconds <= 0) {
+                totalSeconds = 24 * 3600; // Reset
+            }
+            totalSeconds--;
+
+            const h = Math.floor(totalSeconds / 3600);
+            const m = Math.floor((totalSeconds % 3600) / 60);
+            const s = totalSeconds % 60;
+
+            hoursEl.innerText = h < 10 ? '0' + h : h;
+            minsEl.innerText = m < 10 ? '0' + m : m;
+            secsEl.innerText = s < 10 ? '0' + s : s;
+        }, 1000);
+
+        // 6. Dynamic Promotional Toasts (Popups)
+        const toastContainer = document.getElementById('toast-container');
+        const promotions = [
+            { text: "🔥 20% OFF EN CREATINAS", icon: "fa-bolt" },
+            { text: "⚡ NUEVO PRE ENTRENO DISPONIBLE", icon: "fa-fire" },
+            { text: "🚚 ENVÍOS EN EL DÍA", icon: "fa-truck-fast" },
+            { text: "💪 PROTEÍNAS IMPORTADAS INGRESARON", icon: "fa-box" },
+            { text: "⭐ ÚLTIMO STOCK CINTOS GYM", icon: "fa-star" }
+        ];
+
+        function createToast() {
+            // Pick random promo
+            const promo = promotions[Math.floor(Math.random() * promotions.length)];
+            
+            const toast = document.createElement('div');
+            toast.className = 'promo-toast';
+            toast.innerHTML = `
+                <i class="fa-solid ${promo.icon} icon"></i>
+                <span class="promo-text">${promo.text}</span>
+                <button class="toast-close"><i class="fa-solid fa-xmark"></i></button>
+            `;
+
+            toastContainer.appendChild(toast);
+
+            // Trigger animation
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+
+            // Close button functionality
+            const closeBtn = toast.querySelector('.toast-close');
+            closeBtn.addEventListener('click', () => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 500);
+            });
+
+            // Auto remove
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.classList.remove('show');
+                    setTimeout(() => toast.remove(), 500);
+                }
+            }, 5000);
+        }
+
+        // Show a popup every 12 seconds
+        setTimeout(createToast, 3000); // First one after 3s
+        setInterval(createToast, 12000);
+
+        // 7. Form Validation Simple
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            const message = document.getElementById('message').value;
-            
-            if(name && message) {
-                alert(`¡Gracias ${name}! Tu mensaje fue enviado correctamente. Nos pondremos en contacto a la brevedad.`);
-                contactForm.reset();
+            const nombre = document.getElementById('nombre').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            if (nombre && mensaje) {
+                // Change button state
+                const btn = contactForm.querySelector('button');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Redirigiendo...';
+                btn.style.backgroundColor = '#25d366';
+                btn.style.boxShadow = '0 0 15px rgba(37, 211, 102, 0.5)';
+                
+                // Simulate WhatsApp Redirect
+                setTimeout(() => {
+                    const text = encodeURIComponent(`Hola, soy ${nombre}. ${mensaje}`);
+                    window.open(`https://wa.me/1234567890?text=${text}`, '_blank');
+                    
+                    // Reset
+                    contactForm.reset();
+                    btn.innerHTML = originalText;
+                    btn.style = '';
+                }, 1500);
             }
         });
-
-        // Generación de partículas simples en Hero
-        function createParticles() {
-            const container = document.getElementById('particles-js');
-            const particleCount = 20;
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random size, position and animation delay
-                const size = Math.random() * 5 + 2;
-                const posX = Math.random() * 100;
-                const delay = Math.random() * 10;
-                const duration = Math.random() * 10 + 10;
-
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `${delay}s`;
-
-                container.appendChild(particle);
-            }
-        }
-        
-        // Inicializar partículas
-        createParticles();
-
     </script>
 </body>
 </html>
