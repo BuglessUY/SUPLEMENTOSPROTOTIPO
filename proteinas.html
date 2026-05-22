@@ -58,9 +58,9 @@
         }
     </style>
 </head>
-<body class="antialiased flex flex-col min-h-screen pt-20"> <!-- pt-20 evita que el menú tape el contenido -->
+<body class="antialiased flex flex-col min-h-screen pt-20">
 
-    <!-- Header Idéntico al Index (con referencias a index.html) -->
+    <!-- Header Idéntico al Index -->
     <header id="header">
         <a href="index.html" class="logo">
             <i class="fa-solid fa-bolt"></i> SUPLEMENTOS UY
@@ -105,31 +105,41 @@
         <!-- CONTENEDOR PRINCIPAL -->
         <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
             
-            <!-- SIDEBAR FILTROS -->
-            <aside class="hidden lg:block bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 h-fit sticky top-28">
-                <h3 class="font-heading text-xl font-bold border-b border-zinc-800 pb-3 mb-5 uppercase">
-                    <i class="fa-solid fa-filter mr-2 text-titan-red"></i> Filtros
-                </h3>
-                <div class="mb-6">
-                    <h4 class="font-semibold text-gray-300 mb-3">Marca</h4>
-                    <div class="space-y-2 text-sm text-gray-400">
-                        <!-- Inputs agregados con VALUE y CLASS para hacer el filtro funcional mediante JS -->
-                        <label class="flex items-center gap-2 cursor-pointer hover:text-white">
-                            <input type="checkbox" value="optimum" class="accent-titan-red brand-filter"> Optimum Nutrition
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer hover:text-white">
-                            <input type="checkbox" value="bsn" class="accent-titan-red brand-filter"> BSN
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer hover:text-white">
-                            <input type="checkbox" value="star" class="accent-titan-red brand-filter"> Star Nutrition
-                        </label>
-                    </div>
-                </div>
-            </aside>
+            <!-- SIDEBAR FILTROS (AHORA RESPONSIVE) -->
+            <div class="lg:col-span-1">
+                <!-- Botón visible solo en celulares para desplegar filtros -->
+                <button id="mobile-filter-btn" class="lg:hidden w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 mb-4 flex justify-between items-center text-white font-bold uppercase font-heading tracking-wider transition hover:border-titan-red">
+                    <span><i class="fa-solid fa-filter mr-2 text-titan-red"></i> Filtros</span>
+                    <i class="fa-solid fa-chevron-down transition-transform duration-300" id="filter-icon"></i>
+                </button>
 
+                <!-- El aside se oculta en móviles por defecto ('hidden') pero siempre es visible en pantallas grandes ('lg:block') -->
+                <aside id="filter-sidebar" class="hidden lg:block bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 h-fit sticky top-28">
+                    <h3 class="font-heading text-xl font-bold border-b border-zinc-800 pb-3 mb-5 uppercase hidden lg:block">
+                        <i class="fa-solid fa-filter mr-2 text-titan-red"></i> Filtros
+                    </h3>
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-300 mb-3">Marca</h4>
+                        <div class="space-y-3 lg:space-y-2 text-sm text-gray-400">
+                            <!-- Inputs de filtro funcional -->
+                            <label class="flex items-center gap-3 cursor-pointer hover:text-white transition">
+                                <input type="checkbox" value="optimum" class="accent-titan-red brand-filter w-4 h-4"> Optimum Nutrition
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer hover:text-white transition">
+                                <input type="checkbox" value="bsn" class="accent-titan-red brand-filter w-4 h-4"> BSN
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer hover:text-white transition">
+                                <input type="checkbox" value="star" class="accent-titan-red brand-filter w-4 h-4"> Star Nutrition
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- ÁREA DE PRODUCTOS -->
             <div class="lg:col-span-3">
                 <!-- BANNER OFERTAS -->
-                <div class="w-full bg-gradient-to-r from-titan-red to-black border border-titan-red/50 rounded-xl p-6 flex flex-col md:flex-row justify-between items-center mb-8 shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                <div class="w-full bg-gradient-to-r from-titan-red to-black border border-titan-red/50 rounded-xl p-6 flex flex-col md:flex-row justify-between items-center mb-8 shadow-[0_0_20px_rgba(220,38,38,0.2)] text-center md:text-left">
                     <h3 class="font-heading text-2xl font-black text-white italic tracking-wider mb-4 md:mb-0">🔥 HASTA 30% OFF EN WHEY</h3>
                     <a href="https://wa.me/1234567890" target="_blank" class="bg-white text-black px-6 py-2 font-bold rounded uppercase text-sm hover:bg-gray-200 transition">Aprovechar</a>
                 </div>
@@ -171,7 +181,7 @@
                         </div>
                     </div>
 
-                    <!-- Producto 3 agregado para probar el filtro (data-brand="star") -->
+                    <!-- Producto 3 (data-brand="star") -->
                     <div class="product-card bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden relative group glow-hover flex flex-col w-full" data-brand="star">
                         <div class="absolute top-3 left-3 bg-white text-black text-xs font-black px-2 py-1 rounded z-10">NUEVO</div>
                         <img src="https://placehold.co/400x400/0a0a0a/ffffff?text=ISO+WHEY" class="w-full h-56 object-contain p-4 group-hover:scale-105 transition-transform">
@@ -199,7 +209,7 @@
 
     <!-- LÓGICA DE JAVASCRIPT: Menú Mobile & Filtro de Marcas -->
     <script>
-        // Lógica Header Sticky
+        // 1. Lógica Header Sticky
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -209,10 +219,10 @@
             }
         });
 
-        // Lógica Menú Hamburguesa
+        // 2. Lógica Menú Hamburguesa
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('nav-links');
-        const navItems = document.querySelectorAll('.nav-links > li > a:not([href="index.html#productos"])'); // Ignorar el dropdown al hacer click en celular
+        const navItems = document.querySelectorAll('.nav-links > li > a:not([href="index.html#productos"])'); // Ignorar el dropdown al hacer click
 
         if (hamburger) {
             hamburger.addEventListener('click', () => {
@@ -238,7 +248,7 @@
             });
         });
 
-        // LÓGICA FILTRO FUNCIONAL DE MARCAS
+        // 3. LÓGICA FILTRO FUNCIONAL DE MARCAS
         document.addEventListener('DOMContentLoaded', () => {
             const checkboxes = document.querySelectorAll('.brand-filter');
             const products = document.querySelectorAll('.product-card');
@@ -256,7 +266,7 @@
 
                         // Mostrar si no hay nada seleccionado, o si la marca está en la lista de seleccionados
                         if (checkedBrands.length === 0 || checkedBrands.includes(productBrand)) {
-                            product.style.display = 'flex'; // Usamos flex para mantener el diseño de tu tarjeta
+                            product.style.display = 'flex'; // Usamos flex para mantener el diseño original
                         } else {
                             product.style.display = 'none';
                         }
@@ -264,6 +274,25 @@
                 });
             });
         });
+
+        // 4. LÓGICA DE MOSTRAR/OCULTAR FILTROS EN MÓVILES
+        const mobileFilterBtn = document.getElementById('mobile-filter-btn');
+        const filterSidebar = document.getElementById('filter-sidebar');
+        const filterIcon = document.getElementById('filter-icon');
+
+        if (mobileFilterBtn && filterSidebar) {
+            mobileFilterBtn.addEventListener('click', () => {
+                // Toglear clase hidden
+                filterSidebar.classList.toggle('hidden');
+                
+                // Rotar flecha del botón
+                if(filterSidebar.classList.contains('hidden')){
+                    filterIcon.style.transform = 'rotate(0deg)';
+                } else {
+                    filterIcon.style.transform = 'rotate(180deg)';
+                }
+            });
+        }
     </script>
 </body>
 </html>
