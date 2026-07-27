@@ -3,53 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proteínas | TITAN FITNESS</title>
+    <title>Proteínas | TU SUPLEMENTO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Configuración Tailwind adaptada a los colores del Logo -->
     <script>
         tailwind.config = {
-            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Oswald', 'sans-serif'] }, colors: { titan: { 900: '#0a0a0a', 800: '#171717', red: '#dc2626', redhover: '#b91c1c' } } } }
+            theme: { 
+                extend: { 
+                    fontFamily: { 
+                        sans: ['Inter', 'sans-serif'], 
+                        heading: ['Oswald', 'sans-serif'] 
+                    }, 
+                    colors: { 
+                        brand: { 
+                            bg: '#142219',     /* Verde muy oscuro (Fondo) */
+                            card: '#1c2e22',   /* Verde intermedio (Tarjetas) */
+                            border: '#263c2d', /* Verde claro (Bordes) */
+                            primary: '#cba36d',/* Dorado (Acentos) */
+                            hover: '#b38c57'   /* Dorado Oscuro (Hover botones) */
+                        } 
+                    } 
+                } 
+            }
         }
     </script>
+    
     <style>
-        /* Estilos base de la página (Tailwind + Custom) */
-        body { background-color: #000; color: #fff; overflow-x: hidden; }
+        /* Estilos base */
+        body { background-color: #142219; color: #fff; overflow-x: hidden; }
         .glow-hover { transition: all 0.3s ease; }
-        .glow-hover:hover { box-shadow: 0 0 25px rgba(220, 38, 38, 0.4); border-color: #dc2626; transform: translateY(-5px); }
-        .text-glow { text-shadow: 0 0 15px rgba(220, 38, 38, 0.8); }
+        /* Sombra y bordes dorados en las cards de productos */
+        .glow-hover:hover { box-shadow: 0 0 25px rgba(203, 163, 109, 0.3); border-color: #cba36d; transform: translateY(-5px); }
+        .text-glow { text-shadow: 0 0 15px rgba(203, 163, 109, 0.6); }
+        
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #142219; }
+        ::-webkit-scrollbar-thumb { background: #cba36d; border-radius: 4px; }
 
-        /* ESTILOS DEL HEADER DEL INDEX (Menú Desplegable) */
-        header#header { position: fixed; top: 0; width: 100%; padding: 15px 5%; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; }
-        header#header.scrolled { padding: 10px 5%; background: rgba(5, 5, 5, 0.95); }
+        /* ESTILOS DEL HEADER (Menú Desplegable) - Colores integrados */
+        header#header { position: fixed; top: 0; width: 100%; padding: 15px 5%; background: rgba(20, 34, 25, 0.85); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; }
+        header#header.scrolled { padding: 10px 5%; background: rgba(20, 34, 25, 0.98); border-bottom: 1px solid #cba36d; }
         .logo { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: 2px; color: #fff; display: flex; align-items: center; gap: 10px; text-decoration: none;}
-        .logo i { color: #dc2626; text-shadow: 0 0 10px rgba(220, 38, 38, 0.6); }
+        .logo i { color: #cba36d; text-shadow: 0 0 10px rgba(203, 163, 109, 0.6); }
         
         .nav-links { display: flex; gap: 30px; align-items: center; list-style: none; margin: 0; padding: 0;}
         .nav-links a { font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; position: relative; font-family: 'Oswald', sans-serif; text-decoration: none; color: #fff;}
-        .nav-links > li > a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: #dc2626; transition: all 0.3s ease; box-shadow: 0 0 8px rgba(220, 38, 38, 0.6); }
+        .nav-links > li > a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: #cba36d; transition: all 0.3s ease; box-shadow: 0 0 8px rgba(203, 163, 109, 0.6); }
         .nav-links > li > a:hover::after { width: 100%; }
-        .nav-links a:hover { color: #dc2626; }
+        .nav-links a:hover { color: #cba36d; }
         
         /* Dropdown Menu Styles */
         .dropdown { position: relative; }
-        .dropdown-menu { position: absolute; top: 130%; left: 0; background: rgba(5, 5, 5, 0.95); min-width: 220px; padding: 15px 0; border-top: 2px solid #dc2626; box-shadow: 0 10px 30px rgba(0,0,0,0.8); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all 0.3s ease; border-radius: 0 0 8px 8px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; list-style: none;}
+        .dropdown-menu { position: absolute; top: 130%; left: 0; background: rgba(28, 46, 34, 0.98); min-width: 220px; padding: 15px 0; border-top: 2px solid #cba36d; box-shadow: 0 10px 30px rgba(0,0,0,0.8); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all 0.3s ease; border-radius: 0 0 8px 8px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; list-style: none;}
         .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
         .dropdown-menu li { padding: 0 20px; }
         .dropdown-menu a { font-size: 0.85rem !important; display: block; width: 100%; color: #fff; }
         .dropdown-menu a::after { display: none; }
-        .dropdown-menu a:hover { color: #dc2626; padding-left: 5px; }
+        .dropdown-menu a:hover { color: #cba36d; padding-left: 5px; }
 
         .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; }
-        .header-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 28px; font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border: none; border-radius: 4px; transition: all 0.3s ease; text-decoration: none; background-color: #dc2626; color: #fff; box-shadow: 0 0 15px rgba(220, 38, 38, 0.6); }
-        .header-btn:hover { background-color: #b91c1c; box-shadow: 0 0 25px #dc2626; transform: translateY(-2px); color: #fff; }
+        .header-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 28px; font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border: none; border-radius: 4px; transition: all 0.3s ease; text-decoration: none; background-color: #cba36d; color: #142219; box-shadow: 0 0 15px rgba(203, 163, 109, 0.4); }
+        .header-btn:hover { background-color: #b38c57; box-shadow: 0 0 25px #cba36d; transform: translateY(-2px); color: #fff; }
 
         @media (max-width: 768px) {
             .hamburger { display: block; }
-            .nav-links { position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px); background: rgba(5,5,5,0.98); flex-direction: column; align-items: center; justify-content: center; gap: 40px; transition: 0.4s ease-in-out; }
+            .nav-links { position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px); background: rgba(20,34,25,0.98); flex-direction: column; align-items: center; justify-content: center; gap: 40px; transition: 0.4s ease-in-out; }
             .nav-links.active { left: 0; }
             .nav-links a { font-size: 1.5rem; }
             .dropdown-menu { position: relative; top: 0; background: transparent; box-shadow: none; border: none; padding: 10px 0 0 0; display: none; align-items: center; }
@@ -60,10 +81,10 @@
 </head>
 <body class="antialiased flex flex-col min-h-screen pt-20">
 
-    <!-- Header Idéntico al Index -->
+    <!-- Header adaptado al nuevo Logo -->
     <header id="header">
         <a href="index.html" class="logo">
-            <i class="fa-solid fa-bolt"></i> SUPLEMENTOS UY
+            <i class="fa-solid fa-leaf"></i> TU SUPLEMENTO
         </a>
         <nav>
             <ul class="nav-links" id="nav-links">
@@ -71,7 +92,7 @@
                 
                 <!-- DROPDOWN -->
                 <li class="dropdown">
-                    <a href="index.html#productos" style="display:flex; align-items:center; gap:5px; color: #dc2626;">Productos <i class="fa-solid fa-chevron-down" style="font-size: 0.8em;"></i></a>
+                    <a href="index.html#productos" style="display:flex; align-items:center; gap:5px; color: #cba36d;">Productos <i class="fa-solid fa-chevron-down" style="font-size: 0.8em;"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="proteinas.html">Proteínas</a></li>
                         <li><a href="creatinas.html">Creatinas</a></li>
@@ -96,40 +117,38 @@
     </header>
 
     <main class="flex-grow">
-        <!-- HERO -->
-        <section class="py-12 bg-gradient-to-b from-zinc-900 to-black border-b border-zinc-800 text-center px-4 relative">
-            <h1 class="font-heading text-4xl md:text-6xl font-bold uppercase text-white mb-2 tracking-wider mt-4 text-glow">PROTEÍNAS</h1>
+        <!-- HERO (Degradado actualizado a verdes oscuros) -->
+        <section class="py-12 bg-gradient-to-b from-brand-card to-brand-bg border-b border-brand-border text-center px-4 relative">
+            <h1 class="font-heading text-4xl md:text-6xl font-bold uppercase text-brand-primary mb-2 tracking-wider mt-4 text-glow">PROTEÍNAS</h1>
             <p class="text-gray-400 text-lg mx-auto">Suplementos para potenciar recuperación y crecimiento muscular.</p>
         </section>
 
         <!-- CONTENEDOR PRINCIPAL -->
         <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
             
-            <!-- SIDEBAR FILTROS (AHORA RESPONSIVE) -->
+            <!-- SIDEBAR FILTROS -->
             <div class="lg:col-span-1">
-                <!-- Botón visible solo en celulares para desplegar filtros -->
-                <button id="mobile-filter-btn" class="lg:hidden w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 mb-4 flex justify-between items-center text-white font-bold uppercase font-heading tracking-wider transition hover:border-titan-red">
-                    <span><i class="fa-solid fa-filter mr-2 text-titan-red"></i> Filtros</span>
+                <button id="mobile-filter-btn" class="lg:hidden w-full bg-brand-card border border-brand-border rounded-xl p-4 mb-4 flex justify-between items-center text-white font-bold uppercase font-heading tracking-wider transition hover:border-brand-primary">
+                    <span><i class="fa-solid fa-filter mr-2 text-brand-primary"></i> Filtros</span>
                     <i class="fa-solid fa-chevron-down transition-transform duration-300" id="filter-icon"></i>
                 </button>
 
-                <!-- El aside se oculta en móviles por defecto ('hidden') pero siempre es visible en pantallas grandes ('lg:block') -->
-                <aside id="filter-sidebar" class="hidden lg:block bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 h-fit sticky top-28">
-                    <h3 class="font-heading text-xl font-bold border-b border-zinc-800 pb-3 mb-5 uppercase hidden lg:block">
-                        <i class="fa-solid fa-filter mr-2 text-titan-red"></i> Filtros
+                <aside id="filter-sidebar" class="hidden lg:block bg-brand-card/50 border border-brand-border rounded-xl p-6 h-fit sticky top-28">
+                    <h3 class="font-heading text-xl font-bold border-b border-brand-border pb-3 mb-5 uppercase hidden lg:block text-white">
+                        <i class="fa-solid fa-filter mr-2 text-brand-primary"></i> Filtros
                     </h3>
                     <div class="mb-6">
                         <h4 class="font-semibold text-gray-300 mb-3">Marca</h4>
                         <div class="space-y-3 lg:space-y-2 text-sm text-gray-400">
-                            <!-- Inputs de filtro funcional -->
+                            <!-- Inputs de filtro funcional (checkbox dorados) -->
                             <label class="flex items-center gap-3 cursor-pointer hover:text-white transition">
-                                <input type="checkbox" value="optimum" class="accent-titan-red brand-filter w-4 h-4"> Optimum Nutrition
+                                <input type="checkbox" value="optimum" class="accent-brand-primary brand-filter w-4 h-4"> Optimum Nutrition
                             </label>
                             <label class="flex items-center gap-3 cursor-pointer hover:text-white transition">
-                                <input type="checkbox" value="bsn" class="accent-titan-red brand-filter w-4 h-4"> BSN
+                                <input type="checkbox" value="bsn" class="accent-brand-primary brand-filter w-4 h-4"> BSN
                             </label>
                             <label class="flex items-center gap-3 cursor-pointer hover:text-white transition">
-                                <input type="checkbox" value="star" class="accent-titan-red brand-filter w-4 h-4"> Star Nutrition
+                                <input type="checkbox" value="star" class="accent-brand-primary brand-filter w-4 h-4"> Star Nutrition
                             </label>
                         </div>
                     </div>
@@ -138,60 +157,60 @@
 
             <!-- ÁREA DE PRODUCTOS -->
             <div class="lg:col-span-3">
-                <!-- BANNER OFERTAS -->
-                <div class="w-full bg-gradient-to-r from-titan-red to-black border border-titan-red/50 rounded-xl p-6 flex flex-col md:flex-row justify-between items-center mb-8 shadow-[0_0_20px_rgba(220,38,38,0.2)] text-center md:text-left">
-                    <h3 class="font-heading text-2xl font-black text-white italic tracking-wider mb-4 md:mb-0">🔥 HASTA 30% OFF EN WHEY</h3>
-                    <a href="https://wa.me/1234567890" target="_blank" class="bg-white text-black px-6 py-2 font-bold rounded uppercase text-sm hover:bg-gray-200 transition">Aprovechar</a>
+                <!-- BANNER OFERTAS (Degradado dorado a verde oscuro) -->
+                <div class="w-full bg-gradient-to-r from-brand-primary to-brand-bg border border-brand-primary/50 rounded-xl p-6 flex flex-col md:flex-row justify-between items-center mb-8 shadow-[0_0_20px_rgba(203,163,109,0.2)] text-center md:text-left">
+                    <h3 class="font-heading text-2xl font-black text-brand-bg italic tracking-wider mb-4 md:mb-0">🔥 HASTA 30% OFF EN WHEY</h3>
+                    <a href="https://wa.me/1234567890" target="_blank" class="bg-brand-bg text-brand-primary px-6 py-2 font-bold rounded uppercase text-sm hover:bg-brand-card transition">Aprovechar</a>
                 </div>
 
                 <!-- GRID DE PRODUCTOS -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-10" id="productGrid">
                     
-                    <!-- Producto 1 (data-brand="optimum") -->
-                    <div class="product-card bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden relative group glow-hover flex flex-col w-full" data-brand="optimum">
-                        <div class="absolute top-3 left-3 bg-titan-red text-white text-xs font-black px-2 py-1 rounded z-10">OFERTA</div>
-                        <img src="https://placehold.co/400x400/0a0a0a/dc2626?text=WHEY+GOLD" class="w-full h-56 object-contain p-4 group-hover:scale-105 transition-transform">
-                        <div class="p-5 flex flex-col flex-grow border-t border-zinc-800">
-                            <p class="text-zinc-400 text-xs font-bold mb-1">Optimum Nutrition</p>
+                    <!-- Producto 1 -->
+                    <div class="product-card bg-brand-card border border-brand-border rounded-xl overflow-hidden relative group glow-hover flex flex-col w-full" data-brand="optimum">
+                        <div class="absolute top-3 left-3 bg-brand-primary text-brand-bg text-xs font-black px-2 py-1 rounded z-10">OFERTA</div>
+                        <img src="https://placehold.co/400x400/1c2e22/cba36d?text=WHEY+GOLD" class="w-full h-56 object-contain p-4 group-hover:scale-105 transition-transform">
+                        <div class="p-5 flex flex-col flex-grow border-t border-brand-border">
+                            <p class="text-gray-400 text-xs font-bold mb-1">Optimum Nutrition</p>
                             <h3 class="text-white font-bold text-lg mb-2">Whey Gold Standard</h3>
-                            <p class="text-zinc-500 text-sm mb-4">La proteína más vendida del mundo. 24g por servicio.</p>
+                            <p class="text-gray-500 text-sm mb-4">La proteína más vendida del mundo. 24g por servicio.</p>
                             <div class="mt-auto">
-                                <span class="text-white font-bold text-xl block mb-3">$125.000</span>
-                                <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20Whey%20Gold%20Standard" target="_blank" class="w-full bg-titan-red hover:bg-titan-redhover text-white font-bold py-2 rounded uppercase text-sm flex items-center justify-center gap-2 transition">
+                                <span class="text-brand-primary font-bold text-xl block mb-3">$125.000</span>
+                                <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20Whey%20Gold%20Standard" target="_blank" class="w-full bg-brand-primary hover:bg-brand-hover text-brand-bg font-black py-2 rounded uppercase text-sm flex items-center justify-center gap-2 transition">
                                     <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Producto 2 (data-brand="bsn") -->
-                    <div class="product-card bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden relative group glow-hover flex flex-col w-full" data-brand="bsn">
+                    <!-- Producto 2 -->
+                    <div class="product-card bg-brand-card border border-brand-border rounded-xl overflow-hidden relative group glow-hover flex flex-col w-full" data-brand="bsn">
                         <div class="absolute top-3 left-3 bg-blue-600 text-white text-xs font-black px-2 py-1 rounded z-10">TOP VENTAS</div>
-                        <img src="https://placehold.co/400x400/0a0a0a/2563eb?text=SYNTHA-6" class="w-full h-56 object-contain p-4 group-hover:scale-105 transition-transform">
-                        <div class="p-5 flex flex-col flex-grow border-t border-zinc-800">
-                            <p class="text-zinc-400 text-xs font-bold mb-1">BSN</p>
+                        <img src="https://placehold.co/400x400/1c2e22/2563eb?text=SYNTHA-6" class="w-full h-56 object-contain p-4 group-hover:scale-105 transition-transform">
+                        <div class="p-5 flex flex-col flex-grow border-t border-brand-border">
+                            <p class="text-gray-400 text-xs font-bold mb-1">BSN</p>
                             <h3 class="text-white font-bold text-lg mb-2">Syntha-6 Edge</h3>
-                            <p class="text-zinc-500 text-sm mb-4">Matriz de proteínas de liberación sostenida.</p>
+                            <p class="text-gray-500 text-sm mb-4">Matriz de proteínas de liberación sostenida.</p>
                             <div class="mt-auto">
-                                <span class="text-white font-bold text-xl block mb-3">$98.500</span>
-                                <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20Syntha-6" target="_blank" class="w-full bg-titan-red hover:bg-titan-redhover text-white font-bold py-2 rounded uppercase text-sm flex items-center justify-center gap-2 transition">
+                                <span class="text-brand-primary font-bold text-xl block mb-3">$98.500</span>
+                                <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20Syntha-6" target="_blank" class="w-full bg-brand-primary hover:bg-brand-hover text-brand-bg font-black py-2 rounded uppercase text-sm flex items-center justify-center gap-2 transition">
                                     <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Producto 3 (data-brand="star") -->
-                    <div class="product-card bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden relative group glow-hover flex flex-col w-full" data-brand="star">
+                    <!-- Producto 3 -->
+                    <div class="product-card bg-brand-card border border-brand-border rounded-xl overflow-hidden relative group glow-hover flex flex-col w-full" data-brand="star">
                         <div class="absolute top-3 left-3 bg-white text-black text-xs font-black px-2 py-1 rounded z-10">NUEVO</div>
-                        <img src="https://placehold.co/400x400/0a0a0a/ffffff?text=ISO+WHEY" class="w-full h-56 object-contain p-4 group-hover:scale-105 transition-transform">
-                        <div class="p-5 flex flex-col flex-grow border-t border-zinc-800">
-                            <p class="text-zinc-400 text-xs font-bold mb-1">Star Nutrition</p>
+                        <img src="https://placehold.co/400x400/1c2e22/ffffff?text=ISO+WHEY" class="w-full h-56 object-contain p-4 group-hover:scale-105 transition-transform">
+                        <div class="p-5 flex flex-col flex-grow border-t border-brand-border">
+                            <p class="text-gray-400 text-xs font-bold mb-1">Star Nutrition</p>
                             <h3 class="text-white font-bold text-lg mb-2">Iso Whey Ripped</h3>
-                            <p class="text-zinc-500 text-sm mb-4">Proteína nacional aislada de excelente calidad con quemador.</p>
+                            <p class="text-gray-500 text-sm mb-4">Proteína aislada de excelente calidad con quemador integrado.</p>
                             <div class="mt-auto">
-                                <span class="text-white font-bold text-xl block mb-3">$65.000</span>
-                                <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20Iso%20Whey%20Star" target="_blank" class="w-full bg-titan-red hover:bg-titan-redhover text-white font-bold py-2 rounded uppercase text-sm flex items-center justify-center gap-2 transition">
+                                <span class="text-brand-primary font-bold text-xl block mb-3">$65.000</span>
+                                <a href="https://wa.me/1234567890?text=Hola,%20quiero%20consultar%20por%20Iso%20Whey%20Star" target="_blank" class="w-full bg-brand-primary hover:bg-brand-hover text-brand-bg font-black py-2 rounded uppercase text-sm flex items-center justify-center gap-2 transition">
                                     <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
                                 </a>
                             </div>
@@ -203,8 +222,8 @@
         </div>
     </main>
 
-    <footer class="bg-titan-900 border-t border-zinc-800 pt-12 pb-6 mt-auto">
-        <div class="text-center text-gray-600 border-t border-zinc-800 pt-6 text-xs">&copy; 2024 SUPLEMENTOS UY. Todos los derechos reservados.</div>
+    <footer class="bg-brand-bg border-t border-brand-border pt-12 pb-6 mt-auto">
+        <div class="text-center text-gray-500 border-t border-brand-border pt-6 text-xs">&copy; 2026 TU SUPLEMENTO. Todos los derechos reservados.</div>
     </footer>
 
     <!-- LÓGICA DE JAVASCRIPT: Menú Mobile & Filtro de Marcas -->
@@ -222,7 +241,7 @@
         // 2. Lógica Menú Hamburguesa
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('nav-links');
-        const navItems = document.querySelectorAll('.nav-links > li > a:not([href="index.html#productos"])'); // Ignorar el dropdown al hacer click
+        const navItems = document.querySelectorAll('.nav-links > li > a:not([href="index.html#productos"])'); 
 
         if (hamburger) {
             hamburger.addEventListener('click', () => {
@@ -255,18 +274,15 @@
 
             checkboxes.forEach(checkbox => {
                 checkbox.addEventListener('change', () => {
-                    // Obtener todas las marcas seleccionadas
                     const checkedBrands = Array.from(checkboxes)
                         .filter(i => i.checked)
                         .map(i => i.value);
 
-                    // Iterar sobre cada tarjeta de producto
                     products.forEach(product => {
                         const productBrand = product.getAttribute('data-brand');
 
-                        // Mostrar si no hay nada seleccionado, o si la marca está en la lista de seleccionados
                         if (checkedBrands.length === 0 || checkedBrands.includes(productBrand)) {
-                            product.style.display = 'flex'; // Usamos flex para mantener el diseño original
+                            product.style.display = 'flex'; 
                         } else {
                             product.style.display = 'none';
                         }
@@ -282,10 +298,8 @@
 
         if (mobileFilterBtn && filterSidebar) {
             mobileFilterBtn.addEventListener('click', () => {
-                // Toglear clase hidden
                 filterSidebar.classList.toggle('hidden');
                 
-                // Rotar flecha del botón
                 if(filterSidebar.classList.contains('hidden')){
                     filterIcon.style.transform = 'rotate(0deg)';
                 } else {
